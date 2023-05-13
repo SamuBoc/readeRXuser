@@ -21,11 +21,9 @@ public class Controller {
 
 	public void testCases() {
 	
-
-
 		users.add(new Regular("3232", "samu", "Sammm"));
 		users.add(new Premium("5678", "Pocahontas", "Pocah"));
-		
+		products.add(new Book("Harry potter", 250, transformCalendar("04-05-2000"),"urllllll", "A00", "un mago con una barita magica", 2, 25.4));
 
 	}
 
@@ -112,7 +110,7 @@ public class Controller {
 
 			if(products.get(i) != null){
 
-
+				msg += (i+1) + ". " + products.get(i).getName() + products.get(i).getPublicationDate() ;
 
 			}
 

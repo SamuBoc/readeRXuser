@@ -47,7 +47,7 @@ public class Executable {
 				registerProducts();
 				break;
 			case 3:
-				;
+				printProducts();
 				break;
 			case 4:
 				;
@@ -119,7 +119,6 @@ public class Executable {
 
 			System.out.println("Digite el id del libro:");
 			id = reader.nextLine();
-			reader.nextLine();
 	
 			System.out.println("Digite el nombre del libro:");
 			name = reader.nextLine();
@@ -134,6 +133,9 @@ public class Executable {
 			System.out.println("Digite una fecha de publicacion con el siguiente esquema: (dd-MM-yyyy):");
 			date = reader.nextLine();
 	
+			// Limpieza de buffer
+			reader.nextLine();
+
 			System.out.println("Digite el genero del libro \n 1. SCIENCE_FICTION \n 2. FANTASY \n 3. HISTORICAL_NOVELS :");
 			genre = reader.nextInt();
 	
@@ -183,6 +185,10 @@ public class Executable {
 			}
 
 		}
+	}
+
+	private void printProducts(){
+		rXSystem.printBooks();
 	}
 
 
