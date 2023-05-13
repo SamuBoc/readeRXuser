@@ -32,10 +32,14 @@ public class Executable {
 			System.out.println("\nMENU PRINCIPAL");
 			System.out.println("\n1. Registrar usuario");
 			System.out.println("2. Registra un producto");
-			System.out.println("3. ");
-			System.out.println("4. ");
-			System.out.println("5. ");
-			System.out.println("6. Salir");
+			System.out.println("3. Eliminar un usuario");
+			System.out.println("4. Eliminar un libro");
+			System.out.println("5. Modificar un libro");
+			System.out.println("6. Vender un libro");
+			System.out.println("7. Vender una suscripcion");
+			System.out.println("8.");
+			System.out.println("9.");
+			System.out.println("10. Salir");
 			int option = reader.nextInt();
 
 			switch (option) {
@@ -47,15 +51,27 @@ public class Executable {
 				registerProducts();
 				break;
 			case 3:
-				printProducts();
+				deletUser();
 				break;
 			case 4:
-				;
+				deletProduct();
 				break;
 			case 5:
-				;
+				printProducts();
 				break;
 			case 6:
+				saleBook();
+				break;
+			case 7:
+				;
+				break;
+			case 8:
+				;
+				break;
+			case 9:
+			;
+				break;
+			case 10:
 				flag = true;
 				break;
 			default:
@@ -101,51 +117,44 @@ public class Executable {
 
 	private void registerProducts(){
 
+		System.out.println("Digite el id del producto:");
+		String id = reader.nextLine();
+
+		System.out.println("Digite el nombre del libro:");
+		String name = reader.nextLine();
+
+		System.out.println("Digite el numero de paginas:");
+		int numberPages = reader.nextInt();
+
+		System.out.println("Digite el dia de publiacion de el producto");
+		int pDay = reader.nextInt();
+
+		System.out.println("Digite el mes de publiacion de el producto");
+		int pMounth = reader.nextInt();
+
+		System.out.println("Digite el año de publiacion de el producto");
+		int pYear = reader.nextInt();
+
+		System.out.println("Digite la URl que lleva al repositorio del libro:");
+		String url = reader.nextLine();
+
+
 		System.out.println("Digite el tipo de producto que desea registrar \n 1. Libro \n 2. Revista");
 		int typeProduct = reader.nextInt();
 		reader.nextLine();
 
-		String id = "";
-		String name = "";
-		int numPages = 0;
-		String date = "";
-		int genre = 0;
-		String url = "";
-		double price = 0;
-		int periodicity = 0;
-		String review = "";
-
 		if(typeProduct == 1){
 
-			System.out.println("Digite el id del libro:");
-			id = reader.nextLine();
-	
-			System.out.println("Digite el nombre del libro:");
-			name = reader.nextLine();
-	
-			System.out.println("Digite el numero de paginas:");
-			numPages = reader.nextInt();
-	
-			System.out.println("Digite una reseña corta:");
-			review = reader.nextLine();
-			reader.nextLine();
-	
-			System.out.println("Digite una fecha de publicacion con el siguiente esquema: (dd-MM-yyyy):");
-			date = reader.nextLine();
-	
-			// Limpieza de buffer
-			reader.nextLine();
+			System.out.println("Digite una pequeña review del libro:");
+			String review = reader.nextLine();
 
-			System.out.println("Digite el genero del libro \n 1. SCIENCE_FICTION \n 2. FANTASY \n 3. HISTORICAL_NOVELS :");
-			genre = reader.nextInt();
-	
-			System.out.println("Digite la URl que lleva al repositorio del libro:");
-			url = reader.nextLine();
-	
-			System.out.println("Digite el valor de la venta :");
-			price = reader.nextDouble();
+			System.out.println("Digite el genero del libro: \n 1. SCIENCE_FICTION \n 2. FANTASY \n 3. HISTORICAL_NOVELS");
+			int genre = reader.nextInt();
+			
+			System.out.println("Digite el valor de la venta:");
+			double price = reader.nextInt();
 
-			if(rXSystem.registerProduc(id, name, numPages, review, date, genre, price, genre, price, periodicity, typeProduct, url)){
+			if(rXSystem.registerProduc(id, name, numberPages, review, genre, price, numberPages, genre, typeProduct, url, pDay, pMounth, pYear)){
 				System.out.println("Registrado exitosamente");
 			}else{
 				System.out.println("Ocurrio un problema");
@@ -153,44 +162,129 @@ public class Executable {
 
 		}else{
 
-			System.out.println("Digite el id de la revista:");
-			 id = reader.nextLine();
-			reader.nextLine();
-	
-			System.out.println("Digite el nombre :");
-			 name = reader.nextLine();
-	
-			System.out.println("Digite el numero de paginas:");
-			 numPages = reader.nextInt();
-	
-			System.out.println("Digite una fecha de publicacion con el siguiente esquema: (dd-MM-yyyy):");
-			date = reader.nextLine();
-	
-			System.out.println("Digite la periodicidad de emicion \n 1. VARIETY \n 2. SCIENTIFIC \n 3. DESIGN:");
-			periodicity = reader.nextInt();
+			System.out.println("Digite la periodicidad de emicion \n 1. WEEKLY  \n 2. MONTHLY \n 3. BIWEEKLY");
+			int periodicity = reader.nextInt();
 
-			System.out.println("Digite el genero del libro \n 1. SCIENCE_FICTION \n 2. FANTASY \n 3. HISTORICAL_NOVELS :");
-			genre = reader.nextInt();
-	
-			System.out.println("Digite la URl que lleva al repositorio del libro:");
-			url = reader.nextLine();
+			System.out.println("Digite el genero del libro \n 1. VARIETY \n 2. SCIENTIFIC \n 3. DESIGN");
+			int category = reader.nextInt();
 	
 			System.out.println("Digite el valor de la suscripcion :");
-			price = reader.nextDouble();
+			double price = reader.nextDouble();
 
-			if(rXSystem.registerProduc(id, name, numPages, review, date, genre, price, genre, price, periodicity, typeProduct, url)){
+			if(rXSystem.registerProduc(id, name, numberPages, name, numberPages, price, category, periodicity, typeProduct, url, pDay, pMounth, pYear)){
 				System.out.println("Registrado exitosamente");
 			}else{
 				System.out.println("Ocurrio un problema");
 			}
 
+
+
+		
+
 		}
 	}
 
-	private void printProducts(){
-		rXSystem.printBooks();
+	private void deletUser(){
+
+		System.out.println("Digite el usuario que desea eliminar");
+		System.out.println(rXSystem.printUs());
+		int query1 = reader.nextInt();
+		
+		if(rXSystem.verifier(query1, 1) == true){
+			rXSystem.deletUser(query1);
+		}else{
+			System.out.println("Esta opcion no es correcta");
+		}
+
 	}
 
+	private void deletProduct(){
+
+		String query1 = rXSystem.printoProducts();
+		
+		System.out.println(query1);
+		System.out.println("\n Digite el producto que desea eliminar: ");
+		int query2 = reader.nextInt();
+		
+		if(rXSystem.verifier(query2-1, 2) == true){
+			rXSystem.deletProduct(query2);
+			System.out.println("Se ha eliminado correctamente");
+		}else{
+			System.out.println("Esta opcion no es correcta");
+		}
+
+	}
+
+	private void editProduct(){
+
+		String query1 = rXSystem.printoProducts();
+		System.out.println(query1);
+		System.out.println("Que producto desea editar : \n");
+		int query2 = reader.nextInt();
+		
+		if(rXSystem.verifier(query2-1, 2) == true){
+			
+			if(rXSystem.typeProduct(query2) == 1){
+				System.out.println("1. Editar todo");
+				System.out.println("2. ID");
+				System.out.println("3. Nombre");
+				System.out.println("4. Número de páginas");
+				System.out.println("5. Reseña corta");
+				System.out.println("6. Género");
+				System.out.println("7. URL de la portada");
+				System.out.println("8. Valor de venta");
+				int param = reader.nextInt();
+
+				switch (param) {
+					case 1:
+					System.out.println(" Digite el nuevo nombre : \n ");
+
+
+						break;
+					case 2:
+					System.out.println("Digite el nuevo nombre : \n ");
+						break; 
+					default:
+						break;
+				}
+				
+			}else{
+
+			}
+
+		}else{
+			System.out.println("Esta opcion no es correcta");
+		}
+
+
+	}
+
+	private void saleBook(){
+
+		printus();
+
+		System.out.println("A que usuario desea venderle el libro: ");
+		int user = reader.nextInt();
+
+		printProducts();
+		System.out.println("\n" + "Que libro desea venderle: ");
+		int sale = reader.nextInt();
+
+		if(){
+			
+		}
+
+	}
+
+	private void printProducts(){
+		System.out.println(rXSystem.printoProducts());
+	}
+
+	private void printus(){
+		System.out.println(rXSystem.printUs());
+	}
+
+	
 
 
 }
