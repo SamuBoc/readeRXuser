@@ -31,7 +31,7 @@ public class Executable {
 
 			System.out.println("\nMENU PRINCIPAL");
 			System.out.println("\n1. Registrar usuario");
-			System.out.println("2. ");
+			System.out.println("2. Registra un producto");
 			System.out.println("3. ");
 			System.out.println("4. ");
 			System.out.println("5. ");
@@ -44,7 +44,7 @@ public class Executable {
 				registerUser();
 				break;
 			case 2:
-				;
+				registerProducts();
 				break;
 			case 3:
 				;
@@ -99,6 +99,92 @@ public class Executable {
 
 	}
 
+	private void registerProducts(){
+
+		System.out.println("Digite el tipo de producto que desea registrar \n 1. Libro \n 2. Revista");
+		int typeProduct = reader.nextInt();
+		reader.nextLine();
+
+		String id = "";
+		String name = "";
+		int numPages = 0;
+		String date = "";
+		int genre = 0;
+		String url = "";
+		double price = 0;
+		int periodicity = 0;
+		String review = "";
+
+		if(typeProduct == 1){
+
+			System.out.println("Digite el id del libro:");
+			id = reader.nextLine();
+			reader.nextLine();
 	
+			System.out.println("Digite el nombre del libro:");
+			name = reader.nextLine();
+	
+			System.out.println("Digite el numero de paginas:");
+			numPages = reader.nextInt();
+	
+			System.out.println("Digite una reseña corta:");
+			review = reader.nextLine();
+			reader.nextLine();
+	
+			System.out.println("Digite una fecha de publicacion con el siguiente esquema: (dd-MM-yyyy):");
+			date = reader.nextLine();
+	
+			System.out.println("Digite el genero del libro \n 1. SCIENCE_FICTION \n 2. FANTASY \n 3. HISTORICAL_NOVELS :");
+			genre = reader.nextInt();
+	
+			System.out.println("Digite la URl que lleva al repositorio del libro:");
+			url = reader.nextLine();
+	
+			System.out.println("Digite el valor de la venta :");
+			price = reader.nextDouble();
+
+			if(rXSystem.registerProduc(id, name, numPages, review, date, genre, price, genre, price, periodicity, typeProduct, url)){
+				System.out.println("Registrado exitosamente");
+			}else{
+				System.out.println("Ocurrio un problema");
+			}
+
+		}else{
+
+			System.out.println("Digite el id de la revista:");
+			 id = reader.nextLine();
+			reader.nextLine();
+	
+			System.out.println("Digite el nombre :");
+			 name = reader.nextLine();
+	
+			System.out.println("Digite el numero de paginas:");
+			 numPages = reader.nextInt();
+	
+			System.out.println("Digite una fecha de publicacion con el siguiente esquema: (dd-MM-yyyy):");
+			date = reader.nextLine();
+	
+			System.out.println("Digite la periodicidad de emicion \n 1. VARIETY \n 2. SCIENTIFIC \n 3. DESIGN:");
+			periodicity = reader.nextInt();
+
+			System.out.println("Digite el genero del libro \n 1. SCIENCE_FICTION \n 2. FANTASY \n 3. HISTORICAL_NOVELS :");
+			genre = reader.nextInt();
+	
+			System.out.println("Digite la URl que lleva al repositorio del libro:");
+			url = reader.nextLine();
+	
+			System.out.println("Digite el valor de la suscripcion :");
+			price = reader.nextDouble();
+
+			if(rXSystem.registerProduc(id, name, numPages, review, date, genre, price, genre, price, periodicity, typeProduct, url)){
+				System.out.println("Registrado exitosamente");
+			}else{
+				System.out.println("Ocurrio un problema");
+			}
+
+		}
+	}
+
+
 
 }

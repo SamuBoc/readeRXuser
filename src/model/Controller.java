@@ -1,13 +1,19 @@
 package model;
 
 import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Controller {
 
 	private ArrayList<User> users;
+	private ArrayList<Products> products;
 
 	public Controller() {
 
+		products = new ArrayList<Products>();
 		users = new ArrayList<User>();
 		testCases();
 		
@@ -15,8 +21,12 @@ public class Controller {
 
 	public void testCases() {
 	
+
+
 		users.add(new Regular("3232", "samu", "Sammm"));
-		users.add(new Premium("5678", "Pocahontas", "Pocah"));;
+		users.add(new Premium("5678", "Pocahontas", "Pocah"));
+		
+
 	}
 
 	/**
@@ -65,6 +75,51 @@ public class Controller {
 
 	}
 
+	public boolean registerProduc(String id, String name, int numberPages, String review, String datePublic, int genre, double price, int category, double valueSuscription, int periodicity, int typeProduct, String url){
 
+		if(typeProduct == 1){
+
+			products.add(new Book(name, numberPages, transformCalendar(datePublic), url, id, review, genre, price));
+
+			return true;
+		}else{
+
+			products.add(new Magazine(name, numberPages, transformCalendar(datePublic), url, id, category, valueSuscription, periodicity));
+
+			return true;
+		}
+
+	}
+
+	public Calendar transformCalendar(String date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		Date d = null;
+		try {
+		  d = sdf.parse(date);
+		} catch (ParseException e) {
+		  e.printStackTrace();
+		}
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(d);
+		return calendar;
+	  }
+
+	public String printBooks(){
+
+		String msg = "";
+
+		for(int i = 0; i<products.size(); i++){
+
+			if(products.get(i) != null){
+
+
+
+			}
+
+		}
+
+		return msg;
+
+	}
 
 }
