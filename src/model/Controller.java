@@ -176,7 +176,26 @@ public class Controller {
 		}
 
 		}
+		return msg;
+	}
 
+	public String printMagazine(){
+
+		String msg = "";
+		msg += "\n" + "|   	     Name 		  |";
+		msg += "\n" + "_  _ _ _ _ _ _ _ _ _ _ _ ";
+
+		for(int i = 0; i<products.size(); i++){
+
+			if(products.get(i) != null){
+
+			if(products.get(i) instanceof Magazine){
+				msg +=  "\n " + (i+1) + " | " + products.get(i).toString() + " | " +" \n "; 
+				msg += "_ _  _ _ _ _ _ _ _ _ _ _ _";
+			}
+		}
+
+		}
 		return msg;
 	}
 

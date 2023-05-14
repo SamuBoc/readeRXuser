@@ -63,7 +63,7 @@ public class Executable {
 				saleBook();
 				break;
 			case 7:
-				;
+				saleMagazine();
 				break;
 			case 8:
 				;
@@ -279,6 +279,34 @@ public class Executable {
 				}
 			}else{
 				System.out.println("Este libro no se encuentra disponible ");
+			}
+
+		}else{
+			System.out.println("Este usuario no esta registrado: ");
+		}
+
+	}
+
+	private void saleMagazine(){
+
+		printus();
+		System.out.println("A que usuario desea suscribir a la revista: ");
+		int user = reader.nextInt();
+
+		if(rXSystem.verifier(user) == true){
+
+			System.out.println(rXSystem.printMagazine());
+			System.out.println("\n" + "A que revista desea suscribirl@: ");
+			int sale = reader.nextInt();
+
+			if(rXSystem.verifier(sale)){
+				if(rXSystem.saleProduct(user-1, sale-1) == true){
+					System.out.println("\n" + "suscripcion hecha correctamente ");
+				}else{
+					System.out.println("\n" + "Se ha llenado la biblioteca ");
+				}
+			}else{
+				System.out.println("Esta revista no se encuentra disponible ");
 			}
 
 		}else{
