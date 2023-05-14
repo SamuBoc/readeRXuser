@@ -57,7 +57,7 @@ public class Executable {
 				deletProduct();
 				break;
 			case 5:
-				printProducts();
+				editProduct();
 				break;
 			case 6:
 				saleBook();
@@ -190,7 +190,7 @@ public class Executable {
 		System.out.println(rXSystem.printUs());
 		int query1 = reader.nextInt();
 		
-		if(rXSystem.verifier(query1, 1) == true){
+		if(rXSystem.verifier(query1) == true){
 			rXSystem.deletUser(query1);
 		}else{
 			System.out.println("Esta opcion no es correcta");
@@ -206,7 +206,7 @@ public class Executable {
 		System.out.println("\n Digite el producto que desea eliminar: ");
 		int query2 = reader.nextInt();
 		
-		if(rXSystem.verifier(query2-1, 2) == true){
+		if(rXSystem.verifier(query2-1) == true){
 			rXSystem.deletProduct(query2);
 			System.out.println("Se ha eliminado correctamente");
 		}else{
@@ -222,7 +222,7 @@ public class Executable {
 		System.out.println("Que producto desea editar : \n");
 		int query2 = reader.nextInt();
 		
-		if(rXSystem.verifier(query2-1, 2) == true){
+		if(rXSystem.verifier(query2-1) == true){
 			
 			if(rXSystem.typeProduct(query2) == 1){
 				System.out.println("1. Editar todo");
@@ -262,16 +262,27 @@ public class Executable {
 	private void saleBook(){
 
 		printus();
-
 		System.out.println("A que usuario desea venderle el libro: ");
 		int user = reader.nextInt();
 
-		printProducts();
-		System.out.println("\n" + "Que libro desea venderle: ");
-		int sale = reader.nextInt();
+		if(rXSystem.verifier(user) == true){
 
-		if(){
-			
+			System.out.println(rXSystem.printBook());
+			System.out.println("\n" + "Que libro desea venderle: ");
+			int sale = reader.nextInt();
+
+			if(rXSystem.verifier(sale)){
+				if(rXSystem.saleProduct(user-1, sale-1) == true){
+					System.out.println("\n" + "Libro vendido correctamente ");
+				}else{
+					System.out.println("\n" + "Se ha llenado la biblioteca ");
+				}
+			}else{
+				System.out.println("Este libro no se encuentra disponible ");
+			}
+
+		}else{
+			System.out.println("Este usuario no esta registrado: ");
 		}
 
 	}
@@ -285,6 +296,5 @@ public class Executable {
 	}
 
 	
-
 
 }

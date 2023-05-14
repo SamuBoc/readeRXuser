@@ -2,7 +2,7 @@ package model;
 
 import java.util.Calendar;
 
-public abstract class User {
+public abstract class User implements AddProducts{
 
 	private String id;
 	private String name;

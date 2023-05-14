@@ -1,5 +1,6 @@
 package model;
 
+import java.lang.reflect.Array;
 import java.util.Calendar;
 
 public class Book extends Products{
@@ -9,10 +10,15 @@ public class Book extends Products{
     private GenreBook genreBook ;
     private double price;
     private Calendar publicationDate;
-
+    private Magazine magazine[];
+    private Book books[];
+    
     public Book(String name, int numberPages, Calendar publicationDate, String url, String id, String review, int genreBook, double price) {
-        super(name, numberPages, publicationDate, url);
+        super(name, numberPages, url, publicationDate);
         //TODO Auto-generated constructor stub
+
+        magazine = new Magazine[2];
+        books = new Book[5];
 
         switch (genreBook) {
             case 1:
@@ -82,6 +88,40 @@ public class Book extends Products{
         this.publicationDate = publicationDate;
     }
 
+    public String toString(){
+
+        String msg = "";
+
+        msg = "" + getName() + "  |  " + " Book " ;
+
+        return msg;
+        
+    }
+
+
+
+    public Magazine[] getMagazine() {
+        return magazine;
+    }
+
+
+
+    public void setMagazine(Magazine[] magazine) {
+        this.magazine = magazine;
+    }
+
+
+
+    public Book[] getBooks() {
+        return books;
+    }
+
+
+
+    public void setBooks(Book[] books) {
+        this.books = books;
+    }
     
     
+
 }

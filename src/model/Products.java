@@ -2,7 +2,7 @@ package model;
 
 import java.util.Calendar;
 
-public class Products {
+public abstract class Products {
     
 	private String name;
 	private int numberPages;
@@ -10,8 +10,9 @@ public class Products {
     private String url; 
     private int totalPages;
 
-	public Products(String name, int numberPages, Calendar publicationDate,String url ) {
+	public Products(String name, int numberPages,String url , Calendar publicationDate) {
 		super();
+
 		this.name = name;
         this.numberPages = numberPages;
         this.publicationDate = publicationDate;

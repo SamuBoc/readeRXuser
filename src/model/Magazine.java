@@ -11,7 +11,7 @@ public class Magazine extends Products{
     private int activeSuscription;
 
     public Magazine(String name, int numberPages, Calendar publicationDate, String url, String id, int categoryMagazine, double valueSuscription, int periodicity) {
-        super(name, numberPages, publicationDate, url);
+        super(name, numberPages, url, publicationDate);
         //TODO Auto-generated constructor stub
 
         //VARIETY , SCIENTIFIC , DESIGN
@@ -89,6 +89,16 @@ public class Magazine extends Products{
         this.activeSuscription = activeSuscription;
     }
     
+    public String toString(){
+
+        String msg = "";
+
+        msg = "" + getName() + "  |  " + " Mazagine " ;
+
+        return msg;
+
+    }
+
     
 
 }
