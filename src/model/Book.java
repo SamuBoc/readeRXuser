@@ -1,6 +1,4 @@
 package model;
-
-import java.lang.reflect.Array;
 import java.util.Calendar;
 
 public class Book extends Products{
