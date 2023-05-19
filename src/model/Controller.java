@@ -8,11 +8,13 @@ public class Controller {
 
 	private ArrayList<User> users;
 	private ArrayList<Products> products;
+	private ArrayList<Bill> bills;
 
 	public Controller() {
 
 		products = new ArrayList<Products>();
 		users = new ArrayList<User>();
+		bills = new ArrayList<Bill>();
 		testCases();
 		
 	}
@@ -118,10 +120,12 @@ public class Controller {
 		if(products.get(product) instanceof Book){
 			Book sale = (Book)products.get(product);
 			users.get(user).addBook(sale);
+			bills.add(new Bill(sale.getId(), sale.getName(), sale.getPrice()));
 			return true;
 		}else{
 			Magazine sale = (Magazine)products.get(product);
 			users.get(user).addMagazine(sale);
+			bills.add(new Bill(sale.getId(), sale.getName(), sale.getValueSuscription()));
 			return true;
 		}
 	}
@@ -170,7 +174,8 @@ public class Controller {
 			if(products.get(i) != null){
 
 			if(products.get(i) instanceof Book){
-				msg +=  "\n " + (i+1) + " | " + products.get(i).toString() + " | " +" \n "; 
+				Book sale = (Book)products.get(i);
+				msg +=  "\n " + sale.getId() + " | " + products.get(i).toString() + " | " +" \n "; 
 				msg += "_ _  _ _ _ _ _ _ _ _ _ _ _";
 			}
 		}
@@ -190,7 +195,8 @@ public class Controller {
 			if(products.get(i) != null){
 
 			if(products.get(i) instanceof Magazine){
-				msg +=  "\n " + (i+1) + " | " + products.get(i).toString() + " | " +" \n "; 
+				Magazine sale = (Magazine)products.get(i);
+				msg +=  "\n " + sale.getId() + " | " + products.get(i).toString() + " | " +" \n "; 
 				msg += "_ _  _ _ _ _ _ _ _ _ _ _ _";
 			}
 		}
