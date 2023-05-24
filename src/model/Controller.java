@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+
 public class Controller {
 
 	private ArrayList<User> users;
@@ -29,11 +30,11 @@ public class Controller {
 		users.add(new Regular("3232", "samu", "Sammm"));
 		users.add(new Premium("5678", "Pocahontas", "Pocah"));
 
-		products.add(new Book("Harry potter", 250, publicationTest1,"urllllll", "A00", "un mago con una barita magica", 2, 25.4));
-		products.add(new Book("MAD", 40, publicationTest2,"www.yo", "D92", "un mago con una barita magica", 1, 10.70));
+		products.add(new Book("Harry potter", 250, publicationTest1,"urllllll", "un mago con una barita magica", 2, 2, "J22"));
+		products.add(new Book("MAD", 40, publicationTest2,"www.yo", "D92", 1, 10.70, "A22"));
 
-		products.add(new Magazine("SEMANA", 20, publicationTest3, "WWW.la mejor clase es apo", "el mejor profeee woaaa", 3, 20.3, 2));
-		products.add(new Magazine("REVISTA", 15, publicationTest4, "buena revista", "A00", 2, 8.2, 1));
+		products.add(new Magazine("SEMANA", 20, publicationTest3, "WWW.la mejor clase es apo", 3, 20.3, 2, "I22"));
+		products.add(new Magazine("REVISTA", 15, publicationTest4, "buena revista", 2, 8.2, 1, "PW22"));
 
 	}
 
@@ -89,12 +90,12 @@ public class Controller {
 
 		if(typeProduct == 1){
 
-			products.add(new Book(name, numberPages, publicationDate, url, id, review, genre, price));
+			products.add(new Book(name, numberPages, publicationDate, url, review, genre, price, id));
 
 			return true;
 		}else{
 
-			products.add(new Magazine(name, numberPages, publicationDate, url, id, category, price, periodicity));
+			products.add(new Magazine(name, numberPages, publicationDate, url, category, pYear, periodicity, id));
 
 			return true;
 		}
@@ -115,29 +116,52 @@ public class Controller {
 		
 	}
 
-	public boolean saleProduct(int  user, int product){
-
-		if(products.get(product) instanceof Book){
-			Book sale = (Book)products.get(product);
+	public boolean saleProduct(int  user, String product){
+		
+		int position = -1;
+		for(int i = 0; i<products.size(); i++){
+			String comparator = products.get(i).getIdentifier(); 
+			if(comparator.equals(product)){
+				position = i;
+			}
+		}
+		
+		if(position == -1){
+			return false;
+		}if(products.get(position) instanceof Book){
+			Book sale = (Book)products.get(position);
 			users.get(user).addBook(sale);
-			bills.add(new Bill(sale.getId(), sale.getName(), sale.getPrice()));
+			bills.add(new Bill(products.get(position).getIdentifier(), sale.getName(), sale.getPrice()));
+			Double sold = sale.getTotalsold();
+			sale.setTotalsold(sold++);
 			return true;
 		}else{
-			Magazine sale = (Magazine)products.get(product);
+			Magazine sale = (Magazine)products.get(position);
 			users.get(user).addMagazine(sale);
-			bills.add(new Bill(sale.getId(), sale.getName(), sale.getValueSuscription()));
+			bills.add(new Bill(products.get(position).getIdentifier(), sale.getName(), sale.getValueSuscription()));
+			int suscribe = sale.getActiveSuscription();
+			sale.setActiveSuscription(suscribe++);;
 			return true;
 		}
+		
+	
 	}
 
 	public boolean verifier(int position){
 
-		if(users.get(position-1) instanceof User){
+		if(users.get(position-1) != null){
 			return true;
 		}
 
-		if(products.get(position-1) instanceof Book | products.get(position) instanceof Magazine){
-			return true;
+		return false;
+	}
+
+	public boolean verifierId(String position){
+
+		for(int i = 0; i<products.size(); i++){
+			if(products.get(i).getIdentifier().equals(position)){
+				return true;
+			}
 		}
 
 		return false;
@@ -174,8 +198,7 @@ public class Controller {
 			if(products.get(i) != null){
 
 			if(products.get(i) instanceof Book){
-				Book sale = (Book)products.get(i);
-				msg +=  "\n " + sale.getId() + " | " + products.get(i).toString() + " | " +" \n "; 
+				msg +=  "\n " + products.get(i).getIdentifier() + " | " + products.get(i).getName() + " | " +" \n "; 
 				msg += "_ _  _ _ _ _ _ _ _ _ _ _ _";
 			}
 		}
@@ -195,8 +218,7 @@ public class Controller {
 			if(products.get(i) != null){
 
 			if(products.get(i) instanceof Magazine){
-				Magazine sale = (Magazine)products.get(i);
-				msg +=  "\n " + sale.getId() + " | " + products.get(i).toString() + " | " +" \n "; 
+				msg +=  "\n " + products.get(i).getIdentifier() + " | " + products.get(i).getName() + " | " +" \n "; 
 				msg += "_ _  _ _ _ _ _ _ _ _ _ _ _";
 			}
 		}
@@ -230,6 +252,15 @@ public class Controller {
 			}
 
 		return 2;
+	 }
+
+	 public String unSuscribe(){
+
+		String msg = "";
+
+		
+
+		return msg;
 	 }
 
 }

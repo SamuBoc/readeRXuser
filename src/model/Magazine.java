@@ -4,14 +4,13 @@ import java.util.Calendar;
 
 public class Magazine extends Products{
 
-    private String id;
     private CategoryMagazine categoryMagazine;
     private double valueSuscription;
     private Periodicity periodicity;
     private int activeSuscription;
 
-    public Magazine(String name, int numberPages, Calendar publicationDate, String url, String id, int categoryMagazine, double valueSuscription, int periodicity) {
-        super(name, numberPages, url, publicationDate);
+    public Magazine(String name, int numberPages, Calendar publicationDate, String url, int categoryMagazine, double valueSuscription, int periodicity, String identifier) {
+        super(name, numberPages, url, publicationDate, identifier);
         //TODO Auto-generated constructor stub
 
         //VARIETY , SCIENTIFIC , DESIGN
@@ -44,17 +43,8 @@ public class Magazine extends Products{
                 break;
         }
 
-        this.id = id;
         this.valueSuscription = valueSuscription;
 
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public CategoryMagazine getCategoryMagazine() {

@@ -3,18 +3,18 @@ import java.util.Calendar;
 
 public class Book extends Products{
 
-    private String id;
     private String review;
     private GenreBook genreBook ;
     private double price;
     private Calendar publicationDate;
+    private double totalsold;
     
     
-    public Book(String name, int numberPages, Calendar publicationDate, String url, String id, String review, int genreBook, double price) {
-        super(name, numberPages, url, publicationDate);
+    public Book(String name, int numberPages, Calendar publicationDate, String url, String review, int i, double price, String identifier) {
+        super(name, numberPages, url, publicationDate, identifier);
         //TODO Auto-generated constructor stub
 
-        switch (genreBook) {
+        switch (i) {
             case 1:
                 this.genreBook = GenreBook.SCIENCE_FICTION;
                 break;
@@ -29,22 +29,11 @@ public class Book extends Products{
                 break;
         }
 
-        this.id = id;
         this.review = review; 
         this.price = price;
         this.publicationDate = publicationDate;
-        
+        this.totalsold = 0;
 
-    }
-
-    
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getReview() {
@@ -91,6 +80,18 @@ public class Book extends Products{
 
         return msg;
         
+    }
+
+
+
+    public double getTotalsold() {
+        return totalsold;
+    }
+
+
+
+    public void setTotalsold(double totalsold) {
+        this.totalsold = totalsold;
     }
 
 

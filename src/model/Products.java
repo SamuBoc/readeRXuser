@@ -9,8 +9,9 @@ public abstract class Products {
 	private Calendar publicationDate;
     private String url; 
     private int totalPages;
+    private String identifier;
 
-	public Products(String name, int numberPages,String url , Calendar publicationDate) {
+	public Products(String name, int numberPages,String url , Calendar publicationDate, String identifier) {
 		super();
 
 		this.name = name;
@@ -18,8 +19,10 @@ public abstract class Products {
         this.publicationDate = publicationDate;
         this.url = url;
         this.totalPages = 0;
+        this.identifier = identifier;
        
 	}
+    
     
 
     public String getName() {
@@ -64,6 +67,14 @@ public abstract class Products {
 
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
     

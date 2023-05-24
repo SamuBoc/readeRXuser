@@ -37,9 +37,10 @@ public class Executable {
 			System.out.println("5. Modificar un libro");
 			System.out.println("6. Vender un libro");
 			System.out.println("7. Vender una suscripcion");
-			System.out.println("8.");
+			System.out.println("8. Cancelar una suscripcion");
 			System.out.println("9.");
-			System.out.println("10. Salir");
+			System.out.println("10.");
+			System.out.println("11. Salir");
 			int option = reader.nextInt();
 
 			switch (option) {
@@ -69,9 +70,12 @@ public class Executable {
 				;
 				break;
 			case 9:
-			;
+				;
 				break;
 			case 10:
+				break;
+			case 11:
+				System.out.println("Gracias por ejecutar el programa");
 				flag = true;
 				break;
 			default:
@@ -268,11 +272,12 @@ public class Executable {
 		if(rXSystem.verifier(user) == true){
 
 			System.out.println(rXSystem.printBook());
+			reader.nextLine();
 			System.out.println("\n" + "Que libro desea venderle: ");
-			int sale = reader.nextInt();
+			String sale = reader.nextLine();
 
-			if(rXSystem.verifier(sale)){
-				if(rXSystem.saleProduct(user-1, sale-1) == true){
+			if(rXSystem.verifierId(sale)){
+				if(rXSystem.saleProduct(user-1, sale) == true){
 					System.out.println("\n" + "Libro vendido correctamente ");
 				}else{
 					System.out.println("\n" + "Se ha llenado la biblioteca ");
@@ -294,13 +299,14 @@ public class Executable {
 		int user = reader.nextInt();
 
 		if(rXSystem.verifier(user) == true){
-
+			
 			System.out.println(rXSystem.printMagazine());
+			reader.nextLine();
 			System.out.println("\n" + "A que revista desea suscribirl@: ");
-			int sale = reader.nextInt();
+			String sale = reader.nextLine();
 
-			if(rXSystem.verifier(sale)){
-				if(rXSystem.saleProduct(user-1, sale-1) == true){
+			if(rXSystem.verifierId(sale)){
+				if(rXSystem.saleProduct(user-1, sale) == true){
 					System.out.println("\n" + "suscripcion hecha correctamente ");
 				}else{
 					System.out.println("\n" + "Se ha llenado la biblioteca ");
@@ -315,14 +321,25 @@ public class Executable {
 
 	}
 
-	private void printProducts(){
-		System.out.println(rXSystem.printoProducts());
+	private void unsubscribe(){
+
+		printus();
+		System.out.println("A que usuario desea cancelarle suscripcion: ");
+		int user = reader.nextInt();
+
+		if(rXSystem.verifier(user) == true){
+			
+			
+
+		}else{
+			System.out.println("Este usuario no esta registrado: ");
+		}
+
+
 	}
 
 	private void printus(){
 		System.out.println(rXSystem.printUs());
 	}
-
-	
 
 }
