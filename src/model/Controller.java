@@ -254,13 +254,29 @@ public class Controller {
 		return 2;
 	 }
 
-	 public String unSuscribe(){
+	 public String[][] menuUnSuscribe(int position){
 
-		String msg = "";
+		if(users.get(position-1) instanceof Premium){
 
-		
+			String[][] matrizMagazine = new String[2][2]; 
+			return matrizMagazine;	
+		}else{
+			
+			String[][] matrizMagazine = new String[2][]; 
 
-		return msg;
+			for(int i = 0; i == 1; i++){
+				for(int j = 0; i == 1; j++){
+					matrizMagazine[i][j] = users.get(i).getId();
+				}
+			}
+			return matrizMagazine;
+		}
 	 }
+
+	 public Boolean unSuscribe(){
+
+		return false;
+	 }
+
 
 }

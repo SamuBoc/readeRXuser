@@ -67,7 +67,7 @@ public class Executable {
 				saleMagazine();
 				break;
 			case 8:
-				;
+				unsubscribe();
 				break;
 			case 9:
 				;
@@ -328,8 +328,13 @@ public class Executable {
 		int user = reader.nextInt();
 
 		if(rXSystem.verifier(user) == true){
-			
-			
+		
+		reader.nextLine();
+		System.out.println(rXSystem.menuUnSuscribe(user));
+		System.out.println("Seleccione la revista que desea eliminar: ");
+		String magazine = reader.nextLine();				
+
+		
 
 		}else{
 			System.out.println("Este usuario no esta registrado: ");

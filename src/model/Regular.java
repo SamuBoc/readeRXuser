@@ -43,7 +43,6 @@ public class Regular extends User{
         return false;
     }
     
-
-
+    
 
 }
