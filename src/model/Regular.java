@@ -42,7 +42,31 @@ public class Regular extends User{
            }
         return false;
     }
-    
-    
+
+    @Override
+    public String printMagazine() {
+        String msg = "";
+
+        for(int i= 0; i<magazine.length;i++){
+            if(magazine[i] != null){
+                msg += " " +  magazine[i].getIdentifier() + " " + magazine[i].getName() + " \n ";
+            }
+        }
+        return msg; 
+    }
+
+    @Override
+    public boolean magazineDelete(String position) {
+        for(int i = 0; i<magazine.length; i++){
+            String product = magazine[i].getIdentifier();
+            if(product.equals(position)){
+                magazine[i] = null;
+                return true;
+            }
+        }
+        
+
+        return false;
+    }
 
 }

@@ -36,6 +36,9 @@ public class Controller {
 		products.add(new Magazine("SEMANA", 20, publicationTest3, "WWW.la mejor clase es apo", 3, 20.3, 2, "I22"));
 		products.add(new Magazine("REVISTA", 15, publicationTest4, "buena revista", 2, 8.2, 1, "PW22"));
 
+		saleProduct(0, "PW22");
+		saleProduct(1, "I22");
+
 	}
 
 	/**
@@ -128,7 +131,8 @@ public class Controller {
 		
 		if(position == -1){
 			return false;
-		}if(products.get(position) instanceof Book){
+		}
+		if(products.get(position) instanceof Book){ 
 			Book sale = (Book)products.get(position);
 			users.get(user).addBook(sale);
 			bills.add(new Bill(products.get(position).getIdentifier(), sale.getName(), sale.getPrice()));
@@ -253,30 +257,20 @@ public class Controller {
 
 		return 2;
 	 }
+	 
+	 public Boolean unSuscribe(int user, String product){
 
-	 public String[][] menuUnSuscribe(int position){
+		users.get(user-1).magazineDelete(product);
 
-		if(users.get(position-1) instanceof Premium){
-
-			String[][] matrizMagazine = new String[2][2]; 
-			return matrizMagazine;	
-		}else{
-			
-			String[][] matrizMagazine = new String[2][]; 
-
-			for(int i = 0; i == 1; i++){
-				for(int j = 0; i == 1; j++){
-					matrizMagazine[i][j] = users.get(i).getId();
-				}
-			}
-			return matrizMagazine;
-		}
+		return true;
 	 }
 
-	 public Boolean unSuscribe(){
+	 public String userPrintMagazine(int position){
 
-		return false;
+		String msg = users.get(position-1).printMagazine();
+
+		return msg ;
+
 	 }
-
 
 }

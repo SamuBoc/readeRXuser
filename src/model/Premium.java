@@ -38,5 +38,32 @@ public class Premium extends User{
         return true;
     }
 
+    @Override
+    public String printMagazine() {
+        String msg = "";
 
+        for(int i= 0; i<products.size();i++){
+            if(products.get(i) instanceof Magazine){
+                msg += " " +  products.get(i).getIdentifier() + " " + products.get(i).getName() + " \n ";
+            }
+        }
+        return msg; 
+    }
+
+
+    @Override
+    public boolean magazineDelete(String position) {
+        for(int i = 0; i<products.size(); i++){
+            String product = products.get(i).getIdentifier();
+            if(product.equals(position)){
+                products.remove(i);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    
 }

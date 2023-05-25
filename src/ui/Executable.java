@@ -330,11 +330,21 @@ public class Executable {
 		if(rXSystem.verifier(user) == true){
 		
 		reader.nextLine();
-		System.out.println(rXSystem.menuUnSuscribe(user));
-		System.out.println("Seleccione la revista que desea eliminar: ");
+		System.out.println(rXSystem.userPrintMagazine(user));
+		System.out.println("Digite el id de la revista que desea eliminar: ");
 		String magazine = reader.nextLine();				
 
-		
+		if(rXSystem.verifierId(magazine) == true){
+
+			if(rXSystem.unSuscribe(user,magazine)){
+				System.out.println("Suscripcion borrada exitosamente");
+			}else{
+				System.out.println("No fue posible eliminar la suscripcion");
+			}
+
+		}else{
+			System.out.println("Revista no encontrada ");
+		}
 
 		}else{
 			System.out.println("Este usuario no esta registrado: ");

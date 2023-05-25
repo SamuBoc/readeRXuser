@@ -2,7 +2,7 @@ package model;
 
 import java.util.Calendar;
 
-public abstract class User implements AddProducts{
+public abstract class User implements AddProducts, deleteMagazine {
 
 	private String id;
 	private String name;
@@ -53,7 +53,5 @@ public abstract class User implements AddProducts{
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", nickname=" + nickname + ", signUpDate=" + signUpDate + "]";
 	}
-
 	
-
 }
