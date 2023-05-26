@@ -69,4 +69,10 @@ public class Regular extends User{
         return false;
     }
 
+    @Override
+    public String viewLibrary() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'viewLibrary'");
+    }
+
 }
