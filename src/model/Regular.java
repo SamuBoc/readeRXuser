@@ -71,8 +71,9 @@ public class Regular extends User{
 
     @Override
     public String viewLibrary() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'viewLibrary'");
+        String msg = "HOOOOLA";
+
+        return msg;
     }
 
 }

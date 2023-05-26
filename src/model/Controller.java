@@ -276,9 +276,7 @@ public class Controller {
 	
 	 public String viewLibrary(int user){
 
-		String msg = "";
-
-		
+		String msg = users.get(user-1).viewLibrary();
 
 		return msg;
 

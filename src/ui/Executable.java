@@ -70,7 +70,7 @@ public class Executable {
 				unsubscribe();
 				break;
 			case 9:
-				;
+				viewLibrary();
 				break;
 			case 10:
 				break;
@@ -355,6 +355,20 @@ public class Executable {
 
 	private void viewLibrary(){
 		
+		printus();
+		System.out.println("De que usuario desea ver la biblioteca ");
+		int user = reader.nextInt();
+
+		if(rXSystem.verifier(user) == true){
+			
+			System.out.println("no hay problema rey");
+			System.out.println(rXSystem.viewLibrary(user));
+
+		}else{
+			System.out.println("Este usuario no esta registrado: ");
+		}
+
+
 	}
 
 
