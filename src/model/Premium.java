@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 
 public class Premium extends User{
 
@@ -60,10 +62,37 @@ public class Premium extends User{
                 return true;
             }
         }
-
         return false;
     }
 
+
+    @Override
+    public String viewLibrary() {
+        String msg = "";
+
+        //global variables 
+        int[][] newMatrix = new int[5][5];
+        int comparator = 0;
+        Calendar a;
+        int aYear;
+        ArrayList<Integer> dates = new ArrayList<Integer>();
+
+        for(int i = 0; i<products.size(); i++){
+            a = products.get(i).getPublicationDate();
+            aYear = a.get(Calendar.YEAR);
+            dates.add(aYear);
+        }
+
+        Collections.sort(dates, Collections.reverseOrder());
+
+        for(int i = 0; i<5; i++){
+            for(int j = 0; i< 5; i++){
+                
+            }
+        }
+
+        return msg; 
+    }
 
     
 }

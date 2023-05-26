@@ -38,8 +38,8 @@ public class Executable {
 			System.out.println("6. Vender un libro");
 			System.out.println("7. Vender una suscripcion");
 			System.out.println("8. Cancelar una suscripcion");
-			System.out.println("9.");
-			System.out.println("10.");
+			System.out.println("9. Mostrar biblioteca del usuario");
+			System.out.println("10. Simulacion de lectura");
 			System.out.println("11. Salir");
 			int option = reader.nextInt();
 
@@ -352,6 +352,11 @@ public class Executable {
 
 
 	}
+
+	private void viewLibrary(){
+		
+	}
+
 
 	private void printus(){
 		System.out.println(rXSystem.printUs());

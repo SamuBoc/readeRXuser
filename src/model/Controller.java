@@ -38,6 +38,7 @@ public class Controller {
 
 		saleProduct(0, "PW22");
 		saleProduct(1, "I22");
+		saleProduct(1, "PW22");
 
 	}
 
@@ -270,6 +271,16 @@ public class Controller {
 		String msg = users.get(position-1).printMagazine();
 
 		return msg ;
+
+	 }
+	
+	 public String viewLibrary(int user){
+
+		String msg = "";
+
+		
+
+		return msg;
 
 	 }
 
