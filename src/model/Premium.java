@@ -65,9 +65,9 @@ public class Premium extends User {
 
         // global variables
         String[][] newMatrix = new String[5][5];
-        int yearComparator = 0;
-        int monthComparator = 0;
-        int dayComparator = 0;
+        int yearComparator = products.get(0).getPublicationDate().get(Calendar.YEAR);
+        int monthComparator = products.get(0).getPublicationDate().get(Calendar.MONTH);
+        int dayComparator = products.get(0).getPublicationDate().get(Calendar.DAY_OF_MONTH);
         Calendar a;
         int aYear = 0;
         int aMonth = 0;
@@ -78,10 +78,10 @@ public class Premium extends User {
         for (int i = 0; i < products.size(); i++) {
 
             a = products.get(i).getPublicationDate();
-            aYear = a.get(Calendar.YEAR);
             aMonth = a.get(Calendar.MONTH);
             aDay = a.get(Calendar.DAY_OF_MONTH);
-
+            aYear = a.get(Calendar.YEAR);
+        
             for (int j = 0; j < products.size(); j++) {
                 if (aYear >= yearComparator) {
                     if (aYear > yearComparator) {
@@ -108,9 +108,13 @@ public class Premium extends User {
                             }
                         }
                     }
+                }else{
+                    dates.add(products.get(i).getIdentifier());
                 }
             }
         }
+
+        
 
         int empies = dates.size() - 25;
 
@@ -143,4 +147,3 @@ public class Premium extends User {
         }
 
 }
-
