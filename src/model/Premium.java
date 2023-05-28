@@ -92,12 +92,17 @@ public class Premium extends User {
             }
         }
     
+        msg += "  " + " 0  " + " 1  " + " 2  " + " 3  " + " 4  " + " \n";
+        
+
         for (int i = 0; i < newMatrix.length; i++) {
+            msg += i + " ";
             for (int j = 0; j < newMatrix[0].length; j++) {
                 msg += newMatrix[i][j] + " ";
             }
             msg += "\n";
         }
+        
 
         return msg;
         }
