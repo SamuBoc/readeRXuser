@@ -81,14 +81,12 @@ public class Regular extends User {
 
         for (int i = 0; i < magazine.length; i++) {
             if (magazine[i] != null) {
-                Magazine temp = magazine[i];
-                products.add(temp);
+                products.add(magazine[i]);
             }
         }
 
         for (int i = 0; i < books.length; i++) {
             if (books[i] != null) {
-                Book temp = books[i];
                 products.add(books[i]);
             }
         }
@@ -114,7 +112,7 @@ public class Regular extends User {
                     newMatrix[i][j] = products.get(index).getIdentifier();
                     index++;
                 } else {
-                    newMatrix[i][j] = "___"; // Agregar valor para celdas vacías
+                    newMatrix[i][j] = "___"; 
                 }
             }
         }
