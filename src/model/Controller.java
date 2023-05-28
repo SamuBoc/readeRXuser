@@ -36,9 +36,15 @@ public class Controller {
 		products.add(new Magazine("SEMANA", 20, publicationTest3, "WWW.la mejor clase es apo", 3, 20.3, 2, "I22"));
 		products.add(new Magazine("REVISTA", 15, publicationTest4, "buena revista", 2, 8.2, 1, "PW22"));
 
+		
+		saleProduct(0, "I22");
 		saleProduct(0, "PW22");
+		saleProduct(0, "A22");
+		saleProduct(0, "J22");
 		saleProduct(1, "I22");
 		saleProduct(1, "PW22");
+		saleProduct(1, "A22");
+		saleProduct(1, "J22");
 
 	}
 

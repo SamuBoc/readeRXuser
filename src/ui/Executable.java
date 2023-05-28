@@ -124,6 +124,8 @@ public class Executable {
 		System.out.println("Digite el id del producto:");
 		String id = reader.nextLine();
 
+		reader.nextLine();
+
 		System.out.println("Digite el nombre del libro:");
 		String name = reader.nextLine();
 
@@ -142,6 +144,7 @@ public class Executable {
 		System.out.println("Digite la URl que lleva al repositorio del libro:");
 		String url = reader.nextLine();
 
+		reader.nextLine();
 
 		System.out.println("Digite el tipo de producto que desea registrar \n 1. Libro \n 2. Revista");
 		int typeProduct = reader.nextInt();

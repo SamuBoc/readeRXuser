@@ -65,85 +65,43 @@ public class Premium extends User {
 
         // global variables
         String[][] newMatrix = new String[5][5];
-        int yearComparator = products.get(0).getPublicationDate().get(Calendar.YEAR);
-        int monthComparator = products.get(0).getPublicationDate().get(Calendar.MONTH);
-        int dayComparator = products.get(0).getPublicationDate().get(Calendar.DAY_OF_MONTH);
-        Calendar a;
-        int aYear = 0;
-        int aMonth = 0;
-        int aDay = 0;
-
-        ArrayList<String> dates = new ArrayList<String>();
-
-        for (int i = 0; i < products.size(); i++) {
-
-            a = products.get(i).getPublicationDate();
-            aMonth = a.get(Calendar.MONTH);
-            aDay = a.get(Calendar.DAY_OF_MONTH);
-            aYear = a.get(Calendar.YEAR);
         
-            for (int j = 0; j < products.size(); j++) {
-                if (aYear >= yearComparator) {
-                    if (aYear > yearComparator) {
-                        yearComparator = aYear;
-                        monthComparator = aMonth;
-                        dayComparator = aDay;
-                        dates.add(0, products.get(i).getIdentifier());
-                    } else {
-                        if (aMonth >= monthComparator) {
-                            if (aMonth > monthComparator) {
-                                yearComparator = aYear;
-                                monthComparator = aMonth;
-                                dayComparator = aDay;
-                                dates.add(0, products.get(i).getIdentifier());
-                            } else {
-                                if (aDay >= dayComparator) {
-                                    if (aDay > dayComparator) {
-                                        yearComparator = aYear;
-                                        monthComparator = aMonth;
-                                        dayComparator = aDay;
-                                        dates.add(0, products.get(i).getIdentifier());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }else{
-                    dates.add(products.get(i).getIdentifier());
+        for (int i = 0; i < products.size(); i++) {
+            for (int j = i + 1; j < products.size(); j++) {
+                Calendar date1 = products.get(i).getPublicationDate();
+                Calendar date2 = products.get(j).getPublicationDate();
+    
+                if (date1.after(date2)) {
+                    Products temp = products.get(i);
+                    products.set(i, products.get(j));
+                    products.set(j, temp);
                 }
             }
         }
-
-        
-
-        int empies = dates.size() - 25;
-
-        for(int i = 0; i<empies; i++){
-            dates.add("__");
-        }
-
+    
         int index = 0;
-        
+    
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                if (index < dates.size()) {
-                    newMatrix[i][j] = dates.get(index);
+                if (index < products.size()) {
+                    newMatrix[i][j] = products.get(index).getIdentifier();
                     index++;
                 } else {
-                    newMatrix[i][j] = "__";
+                    newMatrix[i][j] = "___";
                 }
             }
         }
+    
+        for (int i = 0; i < newMatrix.length; i++) {
+            for (int j = 0; j < newMatrix[0].length; j++) {
+                msg += newMatrix[i][j] + " ";
+            }
+            msg += "\n";
+        }
 
-        for (int i = 0; i < newMatrix.length; i++) { // filas numbers.length
-			for (int j = 0; j < newMatrix[0].length; j++) { // columnas numbers[0].length
-				msg += newMatrix[i][j] + " ";
-			}
-			msg += "\n";
-		}
-        
-            
         return msg;
         }
+
+
 
 }
