@@ -28,7 +28,7 @@ public class Regular extends User {
     @Override
     public Boolean addBook(Book product) {
         for (int i = 0; i < books.length; i++) {
-            if (books[i] != null) {
+            if (books[i] == null) {
                 books[i] = product;
                 return true;
             }
@@ -39,7 +39,7 @@ public class Regular extends User {
     @Override
     public Boolean addMagazine(Magazine product) {
         for (int i = 0; i < magazine.length; i++) {
-            if (magazine[i] != null) {
+            if (magazine[i] == null) {
                 magazine[i] = product;
                 return true;
             }
@@ -75,7 +75,6 @@ public class Regular extends User {
     @Override
     public String viewLibrary() {
         String msg = "";
-
         String[][] newMatrix = new String[5][5];
 
         ArrayList<Products> products = new ArrayList<Products>();
@@ -90,7 +89,7 @@ public class Regular extends User {
         for (int i = 0; i < books.length; i++) {
             if (books[i] != null) {
                 Book temp = books[i];
-                products.add(temp);
+                products.add(books[i]);
             }
         }
 
@@ -115,7 +114,7 @@ public class Regular extends User {
                     newMatrix[i][j] = products.get(index).getIdentifier();
                     index++;
                 } else {
-                    newMatrix[i][j] = "___";
+                    newMatrix[i][j] = "___"; // Agregar valor para celdas vacías
                 }
             }
         }
